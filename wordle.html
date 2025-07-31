@@ -89,18 +89,6 @@
     .key.absent {
       background-color: #3a3a3c;
     }
-    /* Add this to your <style> section */
-    .fade-out {
-      animation: fadeOut 1s ease forwards;
-    }
-    
-    @keyframes fadeOut {
-      to {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -199,12 +187,10 @@
       input.value = "";
 
       if (guess === secret) {
-          document.body.classList.add("fade-out");
-          setTimeout(() => {
-            window.location.href = "done.html";
-          }, 1000); // Wait for animation to finish
-        }
-
+        setTimeout(() => {
+          window.location.href = "done.html";
+        }, 100);
+      }
      else if (currentRow === maxGuesses) {
         setTimeout(() => alert(`The word was ${secret}.`), 100);
       }
