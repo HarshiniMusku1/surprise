@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini Wordle</title>
+  <title>Wordle< /title>
   <style>
     body {
       font-family: sans-serif;
@@ -92,7 +92,7 @@
   </style>
 </head>
 <body>
-  <h1>Mini Wordle</h1>
+  <h1>Wordle</h1>
   <div id="board" class="board"></div>
   <div>
     <input type="text" id="guess" maxlength="6" autofocus />
@@ -187,8 +187,12 @@
       input.value = "";
 
       if (guess === secret) {
-        setTimeout(() => alert("🎉 You guessed it!"), 100);
-      } else if (currentRow === maxGuesses) {
+        setTimeout(() => {
+          alert("You guessed it!");
+          window.location.href = "done.html";
+        }, 100);
+      }
+     else if (currentRow === maxGuesses) {
         setTimeout(() => alert(`The word was ${secret}.`), 100);
       }
     }
