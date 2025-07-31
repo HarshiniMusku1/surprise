@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Surprise</title>
+
+  <!-- Import Indie Flower from Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-family: 'Delius', cursive;
+      background-color: #f5f5dc; /* light beige */
+    }
+
+    div.greeting {
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    #cake-container {
+      position: relative;
+      margin-top: 20px;
+      cursor: pointer;
+      user-select: none;
+      text-align: center;
+      font-family: monospace;
+      white-space: pre;
+    }
+
+    .candle {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: candleFlicker 1s infinite;
+      cursor: pointer;
+    }
+
+    .candle.hidden {
+      visibility: hidden;
+    }
+
+    /* Positioning candles above the cake */
+    .candle:nth-child(2) { top: -4.5rem; left: 10px; }
+    .candle:nth-child(3) { top: -4.5rem; left: 45px; }
+    .candle:nth-child(4) { top: -4.5rem; left: 80px; }
+    .candle:nth-child(5) { top: -4.5rem; left: 115px; }
+    .candle:nth-child(6) { top: -4.5rem; left: 150px; }
+
+    @keyframes candleFlicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+
+    .ascii-cake {
+      font-size: 1rem;
+      line-height: 1.2;
+    }
+  </style>
+</head>
+<body>
+  <div class="greeting">hi <span>🖤</span></div>
+
+  <div id="cake-container">
+    <!-- Candle elements -->
+    <span class="candle">^|</span>
+    <span class="candle">^|</span>
+    <span class="candle">^|</span>
+    <span class="candle">^|</span>
+    <span class="candle">^|</span>
+
+    <!-- ASCII cake -->
+    <div class="ascii-cake">
+      _____________<br>
+     |             |<br>
+     |   HAPPY     |<br>
+     |  BIRTHDAY!  |<br>
+     |_____________|<br>
+     \~~~~~~~~~~~~~/<br>
+      \___________/
+    </div>
+  </div>
+
+  <script>
+    const candles = document.querySelectorAll('.candle');
+    let litCount = candles.length;
+
+    // Add click listener to each candle
+    candles.forEach(candle => {
+      candle.addEventListener('click', () => {
+        if (!candle.classList.contains('hidden')) {
+          candle.classList.add('hidden');
+          litCount--;
+          if (litCount === 0) {
+            // All candles are out, proceed
+            window.location.href = 'wordle.html';
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
