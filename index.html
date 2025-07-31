@@ -1,11 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8" />
- <title>Hi</title>
+  <meta charset="UTF-8" />
+  <title>Hi</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f5f5dc; /* beige */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Brush Script MT', cursive;
+      flex-direction: column;
+      color: #000;
+      font-size: 2rem; /* Smaller text */
+    }
+
+    #hiText {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    #heart {
+      font-size: 1rem;
+    }
+
+    #pressBtn {
+      margin-top: 20px;
+      padding: 8px 16px;
+      font-size: 0.9rem; /* Slightly smaller button text */
+      display: none;
+      background: none;
+      border: 2px solid black;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
- <div>hi <span>🖤</span></div>
- <button onclick="goToWordle()">press here</button>
+  <div id="hiText">hi <span id="heart">🖤</span></div>
+  <button id="pressBtn" onclick="goToWordle()">press here</button>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById("pressBtn").style.display = "block";
+    }, 1500);
+
+    function goToWordle() {
+      window.location.href = "wordle.html"; // Adjust if needed
+    }
+  </script>
 </body>
 </html>
+
+
+
+add animation for press here
