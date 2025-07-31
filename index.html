@@ -26,33 +26,53 @@
       gap: 4px;
     }
 
+    .instruction {
+      margin-top: 10px;
+      font-size: 1rem;
+      font-style: italic;
+      color: #555;
+      font-family: 'Delius', cursive;
+    }
+
     #cake-container {
-      position: relative;
       margin-top: 20px;
       cursor: pointer;
       user-select: none;
       text-align: center;
       font-family: monospace;
-      white-space: pre;
+    }
+
+    .candles-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      line-height: 1;
+      margin-bottom: -6px;
+      transform: translateX(25px); /* Slightly nudge right */
     }
 
     .candle {
-      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
       font-size: 1.2rem;
-      animation: candleFlicker 1s infinite;
-      cursor: pointer;
+      cursor: default;
     }
 
-    .candle.hidden {
+    .flame {
+      animation: candleFlicker 1s infinite;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .flame.hidden {
       visibility: hidden;
     }
 
-    /* Positioning candles above the cake */
-    .candle:nth-child(2) { top: -4.5rem; left: 10px; }
-    .candle:nth-child(3) { top: -4.5rem; left: 45px; }
-    .candle:nth-child(4) { top: -4.5rem; left: 80px; }
-    .candle:nth-child(5) { top: -4.5rem; left: 115px; }
-    .candle:nth-child(6) { top: -4.5rem; left: 150px; }
+    .wick {
+      user-select: none;
+    }
 
     @keyframes candleFlicker {
       0%, 100% { opacity: 1; }
@@ -61,45 +81,50 @@
 
     .ascii-cake {
       font-size: 1rem;
-      line-height: 1.2;
+      line-height: 1;
+      white-space: pre;
     }
   </style>
 </head>
 <body>
   <div class="greeting">hi <span>🖤</span></div>
+  <div class="instruction">blow the candles for a surprise</div>
 
   <div id="cake-container">
-    <!-- Candle elements -->
-    <span class="candle">^|</span>
-    <span class="candle">^|</span>
-    <span class="candle">^|</span>
-    <span class="candle">^|</span>
-    <span class="candle">^|</span>
+    <!-- Candles row -->
+    <div class="candles-wrapper">
+      <div class="candle"><span class="flame">^</span><span class="wick">|</span></div>
+      <div class="candle"><span class="flame">^</span><span class="wick">|</span></div>
+      <div class="candle"><span class="flame">^</span><span class="wick">|</span></div>
+      <div class="candle"><span class="flame">^</span><span class="wick">|</span></div>
+      <div class="candle"><span class="flame">^</span><span class="wick">|</span></div>
+    </div>
 
     <!-- ASCII cake -->
     <div class="ascii-cake">
-      _____________<br>
-     |             |<br>
-     |   HAPPY     |<br>
-     |  BIRTHDAY!  |<br>
-     |_____________|<br>
-     \~~~~~~~~~~~~~/<br>
+      _____________
+     |             |
+     |   HAPPY     |
+     |  BIRTHDAY!  |
+     |_____________|
+     |             |
+     |             |
+     |_____________|
+     \~~~~~~~~~~~~~/
       \___________/
     </div>
   </div>
 
   <script>
-    const candles = document.querySelectorAll('.candle');
-    let litCount = candles.length;
+    const flames = document.querySelectorAll('.flame');
+    let litCount = flames.length;
 
-    // Add click listener to each candle
-    candles.forEach(candle => {
-      candle.addEventListener('click', () => {
-        if (!candle.classList.contains('hidden')) {
-          candle.classList.add('hidden');
+    flames.forEach(flame => {
+      flame.addEventListener('click', () => {
+        if (!flame.classList.contains('hidden')) {
+          flame.classList.add('hidden');
           litCount--;
           if (litCount === 0) {
-            // All candles are out, proceed
             window.location.href = 'wordle.html';
           }
         }
