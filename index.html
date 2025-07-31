@@ -6,55 +6,52 @@
   <style>
     body {
       margin: 0;
-      background-color: #f5f5dc; /* beige */
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      font-family: 'Brush Script MT', cursive;
       flex-direction: column;
-      color: #000;
-      font-size: 2rem; /* Smaller text */
+      font-family: 'Brush Script MT', cursive;
+      background-color: #f5f5dc; /* light beige */
     }
 
-    #hiText {
+    div {
+      font-size: 2rem;
       display: flex;
       align-items: center;
       gap: 4px;
     }
 
-    #heart {
-      font-size: 1rem;
-    }
-
-    #pressBtn {
+    button {
       margin-top: 20px;
       padding: 8px 16px;
-      font-size: 0.9rem; /* Slightly smaller button text */
-      display: none;
+      font-size: 1rem;
       background: none;
       border: 2px solid black;
-      cursor: pointer;
       border-radius: 5px;
+      cursor: pointer;
+
+      /* Start hidden */
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="hiText">hi <span id="heart">🖤</span></div>
-  <button id="pressBtn" onclick="goToWordle()">press here</button>
+  <div>hi <span>🖤</span></div>
+  <button onclick="goToWordle()">press here</button>
 
   <script>
-    setTimeout(() => {
-      document.getElementById("pressBtn").style.display = "block";
-    }, 1500);
-
     function goToWordle() {
-      window.location.href = "wordle.html"; // Adjust if needed
+      window.location.href = "wordle.html"; // Adjust this path if needed
     }
   </script>
 </body>
 </html>
-
-
-
-add animation for press here
