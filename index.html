@@ -40,6 +40,9 @@
       user-select: none;
       text-align: center;
       font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* centers children horizontally */
     }
 
     .candles-wrapper {
@@ -48,6 +51,7 @@
       gap: 10px;
       line-height: 1;
       margin-bottom: -6px;
+      /* Removed transform: translateX */
     }
 
     .candle {
@@ -82,12 +86,13 @@
       font-size: 1rem;
       line-height: 1;
       white-space: pre;
+      /* no leading spaces so the cake centers as a block */
     }
   </style>
 </head>
 <body>
   <div class="greeting">hi <span>🖤</span></div>
-  <div class="instruction">blow the candles for a small surprise!</div>
+  <div class="instruction">blow the candles for a surprise</div>
 
   <div id="cake-container">
     <!-- Candles row -->
@@ -101,16 +106,16 @@
 
     <!-- ASCII cake -->
     <div class="ascii-cake">
-      _____________
-     |             |
-     |   HAPPY     |
-     |  BIRTHDAY!  |
-     |_____________|
-     |             |
-     |             |
-     |_____________|
-     \~~~~~~~~~~~~~/
-      \___________/
+_____________
+|             |
+|   HAPPY     |
+|  BIRTHDAY!  |
+|_____________|
+|             |
+|             |
+|_____________|
+\~~~~~~~~~~~~~/
+ \___________/
     </div>
   </div>
 
